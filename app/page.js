@@ -4,6 +4,7 @@ import Counter from "./components/Counter";
 import Team from "./components/Team";
 
 export default function Home() {
+  
   return (
     <>
     <Hero/>
