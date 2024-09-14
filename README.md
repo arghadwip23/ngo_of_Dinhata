@@ -1,8 +1,3 @@
-To write an `md` (Markdown) file for your GitHub repository, here's a template that includes sections typically found in a project description. I'll assume that the repository is related to an NGO project for Dinhata. You can adjust the details and content as necessary.
-
-Below is a sample `README.md` file, along with placeholders for screenshots.
-
----
 
 # NGO of Dinhata
 
@@ -96,8 +91,4 @@ Here are some screenshots of the website/application:
 
 ![Contact Us](https://via.placeholder.com/800x400)
 
----
 
-You can replace the placeholder image URLs with actual links to the screenshots hosted online or added to your repository. Simply upload your screenshots to the `images/` folder (or similar) in the repository and then update the links in the `md` file to point to the actual file paths.
-
-Once you're done editing, save this as `README.md` and commit it to the root of your GitHub repository.
