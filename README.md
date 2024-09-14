@@ -1,8 +1,3 @@
-To write an `md` (Markdown) file for your GitHub repository, here's a template that includes sections typically found in a project description. I'll assume that the repository is related to an NGO project for Dinhata. You can adjust the details and content as necessary.
-
-Below is a sample `README.md` file, along with placeholders for screenshots.
-
----
 
 # NGO of Dinhata
 
