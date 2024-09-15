@@ -8,7 +8,7 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
     <div className="px-20 py-16 mx-auto bg-zinc-400 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div className="grid gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
       <div className=' text-center px-4 rounded border border-red-950 bg-white relative  '>
-      <IKImage urlEndpoint={urlEndpoint}  className="object-cover w-24 h-24 mx-auto rounded-full shadow border border-red-950 " path="TEAM/15.png" width={500} height={500} alt="image of president" />
+      {/* <IKImage urlEndpoint={urlEndpoint}  className="object-cover w-24 h-24 mx-auto rounded-full shadow border border-red-950 " path="TEAM/15.png" width={500} height={500} alt="image of president" /> */}
         <div className="flex flex-col justify-center">
           <p className="text-lg font-bold text-blue-500">Arpita Chakrobarty</p>
           <p className="mb-4 text-xs text-gray-400">President</p>

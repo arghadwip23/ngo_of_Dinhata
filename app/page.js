@@ -4,7 +4,7 @@ import Counter from "./components/Counter";
 import Team from "./components/Team";
 import HeroS from "./components/HeroS";
 import Slider from "./components/Slider";
-import Teama from "./components/Teama";
+import Teama from "./components/teama";
 
 export default function Home() {
   
@@ -15,7 +15,7 @@ export default function Home() {
 
     <Counter/>
     <Slider/>
-    <Team/>
+    {/* <Team/> */}
     <Teama/>
     </>
     

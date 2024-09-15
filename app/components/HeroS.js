@@ -16,7 +16,7 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
           Get Started
         </button>
         </div>
-        <div className=''>
+        <div className='hidden md:block'>
         <IKImage urlEndpoint={urlEndpoint} path="hero.png"  alt="Alt text" height={600} width={600} className='w-full h-auto' />
         </div>
     </section>
