@@ -17,7 +17,7 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               {/* LOGO */}
               <Link href="/">
-              <IKImage urlEndpoint={urlEndpoint} path="logo.png" width={70} height={70} alt="LOgo" className='' />
+              <IKImage urlEndpoint={urlEndpoint} path="logo.png" width={60} height={60} alt="LOgo"  className='' />
               </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">

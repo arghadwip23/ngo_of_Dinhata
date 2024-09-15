@@ -12,7 +12,8 @@
     "imagekitio-next": "^1.0.0",
     "next": "14.2.8",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "eslint": "^8",

@@ -3,7 +3,8 @@ import Image from "next/image";
 import Counter from "./components/Counter";
 import Team from "./components/Team";
 import HeroS from "./components/HeroS";
-
+import Slider from "./components/Slider";
+import Teama from "./components/Teama";
 
 export default function Home() {
   
@@ -13,7 +14,9 @@ export default function Home() {
     <HeroS/>
 
     <Counter/>
+    <Slider/>
     <Team/>
+    <Teama/>
     </>
     
   );
