@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { IKImage } from 'imagekitio-next';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 
 export default function Slider() {
+  const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
   return (
     <>
       <Swiper
@@ -22,10 +23,10 @@ export default function Slider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper bg-black w-screen px-10  text-white"
+        className="mySwiper bg-black  px-3 text-white md:w-2/3"
       >
-        <SwiperSlide><img src="https://picsum.photos/400/200" alt="" /></SwiperSlide>
-        <SwiperSlide className='w-100 h-6 bg-red-900'>Slide 2</SwiperSlide>
+        <SwiperSlide><IKImage urlEndpoint={urlEndpoint} path="Banner/2.png"  alt="Alt text" height={329} width={686} className='w-full h-auto' /></SwiperSlide>
+        <SwiperSlide className=' h-6 bg-red-900'><IKImage urlEndpoint={urlEndpoint} path="Banner/5.png"  alt="Alt text" height={329} width={686} className='w-full h-auto' /></SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 //import Hero from "./components/Hero";
 import Counter from "./components/Counter";
+import Description from "./components/Description";
 
 import HeroS from "./components/HeroS";
 import Slider from "./components/Slider";
@@ -15,6 +16,7 @@ export default function Home() {
 
     <Counter/>
     <Slider/>
+    <Description />
     {/* <Team/> */}
     <Teams/>
     </>
