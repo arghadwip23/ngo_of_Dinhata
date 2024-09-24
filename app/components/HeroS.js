@@ -32,17 +32,19 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
     //     <IKImage urlEndpoint={urlEndpoint} path="hero.png"  alt="Alt text" height={600} width={600} className='w-full h-auto' />
     //     </div>
     // </section>
+    //আশার আলো ছড়ান সমাজে
     <section className="bg-gray-100 text-gray-800">
 	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
 		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-			<h1 className="text-5xl font-bold leading-none sm:text-6xl">Ac mattis
-				<span className="text-violet-600">senectus</span>erat pharetra
+			<h1 className="text-5xl font-bold leading-none sm:text-6xl">আশার <span className='text-yellow-500'>আলো</span> ছড়ান সমাজে
 			</h1>
-			<p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
-				<br  className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque ligula sem
+			<p className="mt-6 mb-8 text-lg sm:mb-12">মানবতার সেবায় আপনার সহযোগিতা দরিদ্রদের জীবন বদলাতে পারে।
+
+
+				<br  className="hidden md:inline lg:hidden" />শিক্ষা ও সাহায্যের মাধ্যমে দুর্দশাগ্রস্ত মানুষের জীবন পাল্টাতে সাহায্য করুন।
 			</p>
 			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-violet-600 dark:text-gray-50">Suspendisse</a>
+				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-yellow-500 dark:text-gray-50">Suspendisse</a>
 				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">Malesuada</a>
 			</div>
 		</div>
