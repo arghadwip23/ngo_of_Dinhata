@@ -16,7 +16,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 export default function Slider() {
   const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
   return (
-    <>
+    <section>
       <Swiper
         pagination={{
           type: 'fraction',
@@ -35,6 +35,6 @@ export default function Slider() {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
-    </>
+    </section>
   );
 }

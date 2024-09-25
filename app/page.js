@@ -7,6 +7,8 @@ import HeroS from "./components/HeroS";
 import Slider from "./components/Slider";
 import Teams from "./components/Teams";
 import Faq from "./components/Faq";
+import Contact from "./components/Contact";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   
@@ -16,11 +18,14 @@ export default function Home() {
     <HeroS/>
 
     <Counter/>
-    <Slider/>
+    {/* <Slider/> */}
     <Description />
    
     <Teams/>
+    <Testimonials/>
+    <Contact/>
     <Faq/>
+    
     </>
     
   );
