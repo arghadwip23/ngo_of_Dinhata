@@ -4,12 +4,12 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/just.ttf",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "./fonts/just.ttf",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
+        className={` antialiased bg-white`}
       >
         <Nav />
         {children}

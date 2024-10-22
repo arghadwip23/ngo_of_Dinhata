@@ -4,7 +4,7 @@ export default function Counter() {
   return (
     <section className="  px-1 py-16 mt-3 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 ">
     <div className="max-w-6xl mx-auto font-[sans-serif]">
-      <h2 className="text-black sm:text-4xl text-2xl font-extrabold text-center mb-16">Discover Our Exclusive Features</h2>
+      <h2 className="text-black sm:text-4xl text-2xl font-extrabold text-center mb-16">অমাদের কিছু বৈশিস্থ </h2>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12">
         <div className="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">

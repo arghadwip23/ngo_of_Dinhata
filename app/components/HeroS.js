@@ -3,14 +3,12 @@
 import React from 'react'
 import { IKImage } from 'imagekitio-next';
 import localFont from 'next/font/local';
+import Image from 'next/image';
 
-const myFont = localFont({
-  src:[{
-    path: '../../public/fonts/haider.ttf'
-  }] 
-    
-  ,
-  variable: '--font-my-custom-font'
+const bengali = localFont({
+  src: "./fonts/just.ttf",
+  variable: "--font-bengali"
+  
 });
 
 
@@ -33,12 +31,12 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
     //     </div>
     // </section>
     //আশার আলো ছড়ান সমাজে
-    <section className="bg-gray-100 text-gray-800 border">
+    <section className={`bg-gray-100 text-gray-800 border ${bengali.variable} `}>
 	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between border">
 		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left border">
-			<h1 className="text-5xl font-bold leading-none sm:text-6xl">আশার <span className='text-yellow-500'>আলো</span> ছড়ান সমাজে
+			<h1 className={`text-5xl leading-none sm:text-6xl font-bengalifont`}> আশার <span className='text-yellow-500'>আলো</span> ছড়ান সমাজে
 			</h1>
-			<p className="mt-6 mb-8 text-lg sm:mb-12">মানবতার সেবায় আপনার সহযোগিতা দরিদ্রদের জীবন বদলাতে পারে।
+			<p className={`mt-6 mb-8 text-2xl sm:mb-12 font-basundhara`}>মানবতার সেবায় আপনার সহযোগিতা দরিদ্রদের জীবন বদলাতে পারে।
 
 
 				<br  className="hidden md:inline lg:hidden" />শিক্ষা ও সাহায্যের মাধ্যমে দুর্দশাগ্রস্ত মানুষের জীবন পাল্টাতে সাহায্য করুন।
@@ -48,8 +46,12 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
 				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded text-yellow-500 border-yellow-500">যুক্ত হোন</a>
 			</div>
 		</div>
-		<div className=" hidden flex border items-center justify-center   mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 lg:block">
-    <IKImage urlEndpoint={urlEndpoint} path="hero.png"  alt="Alt text" height={400} width={400} className='w-full h-auto' />
+		<div className=" hidden  border items-center justify-center   mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 lg:block">
+    {/* <IKImage urlEndpoint={urlEndpoint} path="hero.png"  alt="Alt text" height={400} width={400} className='w-full h-auto' /> */}
+    {/* <Image src="/hero.svg" width={700} height={700} ></Image> */}
+    <img src="/hero.svg" className='' width={700} alt="" />
+    
+  
 		</div>
 	</div>
 </section>
