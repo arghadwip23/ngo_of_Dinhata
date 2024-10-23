@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
       </head>
       <body
-        className={` antialiased bg-white`}
+        className={` antialiased bg-white font-basundhara`}
       >
         <Nav />
         {children}

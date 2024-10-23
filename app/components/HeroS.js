@@ -34,7 +34,7 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
     <section className={`bg-gray-100 text-gray-800  ${bengali.variable} `}>
 	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between ">
 		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left ">
-			<h1 className={`text-5xl leading-none sm:text-6xl font-bengalifont`}> আশার <span className='text-yellow-500'>আলো</span> ছড়ান সমাজে
+			<h1 className={`text-5xl leading-none sm:text-6xl font-bengalifont lg:text-6.5xl`}> আশার <span className='text-yellow-500'>আলো</span> ছড়ান সমাজে
 			</h1>
 			<p className={`mt-6 mb-8 text-2xl sm:mb-12 font-basundhara`}>মানবতার সেবায় আপনার সহযোগিতা দরিদ্রদের জীবন বদলাতে পারে।
 

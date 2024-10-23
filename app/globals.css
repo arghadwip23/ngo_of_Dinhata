@@ -19,6 +19,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.counterTitle{
+background:linear-gradient(to top left, #f97316,#facc15);
+background-clip: text;
+-webkit-text-fill-color: transparent;
+font-family: 'midiumbengali';
+}
+
+
 @font-face {
   font-family: 'BengaliFont'; /* Name of the font family */
   src: url('./fonts/Li\ Alinur\ Shishir\ Unicode.ttf');
@@ -28,6 +37,10 @@ body {
 @font-face {
   font-family: 'Bashundhara';
   src: url('./fonts/Li\ Alinur\ Bashundhara\ Unicode.ttf');
+}
+@font-face {
+  font-family: "midiumbengali";
+  src: url('./fonts/Li\ Alinur\ Imarat\ Unicode.ttf');
 }
 @layer utilities {
   .text-balance {

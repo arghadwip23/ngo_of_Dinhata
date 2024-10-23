@@ -20,7 +20,8 @@ module.exports = {
 		fontFamily:{
 			sans:['var(--font-bengali)'],
 			bengalifont : ['BengaliFont'],
-			basundhara : ['Bashundhara']
+			basundhara : ['Bashundhara'],
+			bengmid:['midiumbengali']
 		}
   	}
   },
