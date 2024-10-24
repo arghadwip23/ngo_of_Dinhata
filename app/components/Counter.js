@@ -92,8 +92,8 @@ export default function Counter() {
             </g>
           </svg>
           <div>
-            <h3 className="text-yellow-500 text-xl  mb-3 counterTitle">নিরপেক্ষতা</h3>
-            <p className="text-gray-600 text-sm">আমাদের সংস্থা রাজনৈতিক বা ধর্মীয় নিরপেক্ষ থাকে এবং মানবিক কারণে কাজ করে।
+            <h3 className="text-yellow-500 text-2xl  mb-3 counterTitle">নিরপেক্ষতা</h3>
+            <p className="text-gray-600 text-md">আমাদের সংস্থা রাজনৈতিক বা ধর্মীয় নিরপেক্ষ থাকে এবং মানবিক কারণে কাজ করে।
             </p>
           </div>
         </div>
