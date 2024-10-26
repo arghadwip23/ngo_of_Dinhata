@@ -21,7 +21,7 @@ body {
 }
 
 .counterTitle{
-background:linear-gradient(to top left, #f97316,#facc15);
+background:linear-gradient(to bottom left, #f97316 ,#facc15 );
 background-clip: text;
 -webkit-text-fill-color: transparent;
 font-family: 'midiumbengali';
