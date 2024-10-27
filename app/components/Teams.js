@@ -7,8 +7,8 @@ export default function Teams() {
   return (
     <div className="font-[sans-serif] max-w-5xl pt-20 px-10 max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4">
             <div className="max-w-2xl mx-auto text-center">
-                <h2 className="text-gray-800 text-3xl font-extrabold">Meet our team</h2>
-                <p className="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p>
+                <h2 className="text-gray-800 sm:text-4xl text-2xl font-bengalifont">আমাদের সদস্য</h2>
+                {/* <p className="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p> */}
             </div>
 
             <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24">
