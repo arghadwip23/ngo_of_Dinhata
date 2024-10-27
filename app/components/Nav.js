@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +15,11 @@ export default function Nav() {
 
         {/* Menu Items */}
         <div className="hidden md:flex items-center space-x-6">
-          <a href="#" className="text-gray-600 hover:text-blue-600">Home</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">About Us</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Gallery</a>
+          <Link href="./" className="text-gray-600 hover:text-blue-600">Home</Link>
+          <Link href="about" className="text-gray-600 hover:text-blue-600">About Us</Link>
+          <Link href="#" className="text-gray-600 hover:text-blue-600">Gallery</Link>
           <a href="#" className="text-gray-600 hover:text-blue-600">Login</a>
-          <a href="#" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Donate Us</a>
+          <Link href="/donate" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Donate Us</Link>
         </div>
 
         {/* Hamburger Icon */}

@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export default function Description() {
   return (
@@ -10,7 +11,7 @@ export default function Description() {
 				
 				<h3 className="text-4xl counterTitle">আমরা কারা?</h3>
 				<p className="my-6 dark:text-gray-600 text-xl">আমরা দিনহাটার কিছু স্বার্থহীন সমাজসেবক , মূলত পেশাগত ভাবে বেশির ভাগই শিক্ষক। নিজেদের কর্মসূত্রে আমরা এখানকার মানুষের আবশ্যকতা , দুর্বলতা এবং কিছু দরিদ্র গোষ্ঠীর অসহায়তার সাথে অবগত হওয়ায় সমাজে বদল আনার জন্য নিজেদের যোগদান দেওয়ার লক্ষ্যে আরো দৃঢ় হয় যায় । যার ফলস্বরূপ ২০২০ সালে দায়বদ্ধ ওয়েলফেয়ার সোসাইটির প্রতিস্থাপন করা হয়.</p>
-				<button type="button" className="self-start">Action</button>
+				<Link href={`/about`}>visit us</Link>
 			</div>
 		</div>
 		<div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse hover:shadow-xl hover:scale-105 transition-all duration-300">
