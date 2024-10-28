@@ -15,7 +15,8 @@ export default function Teams() {
                 <div className="bg-gray-200 relative rounded">
                 {/* <img src="https://readymadeui.com/team-2.webp" className="w-32 h-32 rounded-full inline-block -mt-12" /> */}
 
-                <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/15.png" width={500} height={500} alt="image of president" />
+                {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/15.png" width={500} height={500} alt="image of president" /> */}
+                <img src="https://ayandip33.github.io/image/15.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
                     <div className="py-4">
                         <h4 className="text-gray-800 text-base font-extrabold">Arpita Chakrobarty</h4>
                         <p className="text-gray-800 text-xs mt-1">Secretary</p>
@@ -50,7 +51,8 @@ export default function Teams() {
                 </div>
 
                 <div className="bg-gray-200 relative rounded">
-                <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/3.png" width={500} height={500} alt="image of president" />
+                {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/3.png" width={500} height={500} alt="image of president" /> */}
+                <img src="https://ayandip33.github.io/image/12.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 
                     <div className="py-4">
                         <h4 className="text-gray-800 text-base font-extrabold">Asaduzzaman</h4>
@@ -86,7 +88,8 @@ export default function Teams() {
                 </div>
 
                 <div className="bg-gray-200 relative rounded">
-                <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/1.png" width={500} height={500} alt="image of president" />
+                {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/1.png" width={500} height={500} alt="image of president" /> */}
+                <img src="https://ayandip33.github.io/image/1.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 
                     <div className="py-4">
                         <h4 className="text-gray-800 text-base font-extrabold">Manoranjan Barman</h4>
@@ -122,7 +125,8 @@ export default function Teams() {
                 </div>
 
                 <div className="bg-gray-200 relative rounded">
-                <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/17.png" width={500} height={500} alt="image of president" />
+                {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/17.png" width={500} height={500} alt="image of president" /> */}
+                <img src="https://ayandip33.github.io/image/17.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 
                     <div className="py-4">
                         <h4 className="text-gray-800 text-base font-extrabold">Biplab Barman</h4>
