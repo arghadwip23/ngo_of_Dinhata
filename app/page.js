@@ -24,7 +24,7 @@ export default function Home() {
     <Teams/>
     <Testimonials/>
     <Contact/>
-    <Faq/>
+    {/* <Faq/> */}
     
     </>
     

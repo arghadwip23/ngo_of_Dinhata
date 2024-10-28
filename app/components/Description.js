@@ -23,12 +23,12 @@ export default function Description() {
 				<button type="button" className="self-start">Action</button>
 			</div>
 		</div>
-		<div className="flex flex-col overflow-hidden rounded-md shadow-md lg:flex-row">
-			<img src="https://picsum.photos/900" alt="" className="h-80 bg-gray-500 aspect-video object-cover" />
+		<div className="flex flex-col overflow-hidden rounded-md shadow-md lg:flex-row hover:scale-105 hover:shadow-lg transition-all duration-300">
+			<img src="https://arghadwip23.github.io/image/Group8.png" alt="" className="md:h-80 bg-yellow-500 " />
 			<div className="flex flex-col justify-center flex-1 p-6 bg-gray-50">
-				<span className="text-xs uppercase dark:text-gray-600">Join, it&apos;s free</span>
-				<h3 className="text-3xl font-bold">We&apos;re not reinventing the wheel</h3>
-				<p className="my-6 dark:text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam possimus quas, error esse quos.</p>
+				
+				<h3 className="text-4xl font-medium counterTitle pt-2">শিক্ষার আলো</h3>
+				<p className="my-6 dark:text-gray-600 text-xl">আপনি কি একজন শিক্ষার্থী এবং অর্থের অভাবে পড়াশোনা চালিয়ে যেতে সমস্যায় পড়ছেন? দায়বদ্ধ ওয়েলফেয়ার সোসাইটি আপনাদের পাশে রয়েছে। আমরা আর্থিকভাবে অসহায় এবং প্রান্তিক ছাত্রছাত্রীদের সাহায্য করতে প্রস্তুত, যাতে তারা নিরবচ্ছিন্নভাবে শিক্ষার আলোয় আলোকিত হতে পারে। যদি আপনাকে পড়াশোনার জন্য আর্থিক সহায়তার প্রয়োজন হয়, তবে নির্দ্বিধায় আমাদের সাথে যোগাযোগ করুন। শিক্ষার মাধ্যমে ভবিষ্যৎ নির্মাণে আপনাদের পাশে থাকার অঙ্গীকার আমাদের। </p>
 				<button type="button" className="self-start">Action</button>
 			</div>
 		</div>

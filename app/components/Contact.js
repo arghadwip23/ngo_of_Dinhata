@@ -2,23 +2,22 @@ import React from 'react'
 
 export default function Contact() {
   return (
-   <section className='mt-10'>
-    <div className="bg-yellow-50 font-[sans-serif] lg:h-screen">
+   <section className='mt-40 mb-20'>
+    <div className="  ">
             <div
-                className="grid lg:grid-cols-3 items-center max-lg:justify-center gap-6 h-full sm:p-12 p-8 max-sm:p-4">
-                <div className="max-w-lg max-lg:mx-auto max-lg:text-center max-lg:mb-6">
-                    <h2 className="text-4xl font-extrabold text-gray-800">Get In Touch</h2>
-                    <p className="text-sm text-gray-600 mt-4 leading-relaxed">Have a specific inquiry or looking to explore new opportunities? Our
-                        experienced team is ready to engage with you.</p>
+                className="  px-10 lg:px-40">
+                <div>
+                    <h2 className="text-4xl  text-gray-800 font-bengalifont text-center">যোগাযোগ করুন</h2>
+                    <p className="text-lg text-gray-600 mt-4 leading-relaxed">নিরবিচ্ছিন্ন শিক্ষার সুযোগ পেতে ও যেকোনো সাহায্যের জন্য আমাদের সাথে যোগাযোগ করুন। দায়বদ্ধ ওয়েলফেয়ার সোসাইটি আর্থিকভাবে অসহায় ছাত্রছাত্রীদের পাশে দাঁড়াতে প্রস্তুত। আমরা বিশ্বাস করি, শিক্ষার মাধ্যমে সমাজকে এগিয়ে নিয়ে যাওয়া সম্ভব। শিক্ষার পথের বাধা দূর করতে আমাদের এই উদ্যোগে যোগ দিন।</p>
 
-                    <form className="mx-auto mt-8 bg-white rounded-lg p-6 shadow-md space-y-4 text-gray-800">
-                        <input type='text' placeholder='Name'
+                    <form className="mx-auto mt-8 bg-white rounded-lg p-6 border md:mx-20 xl:mx-60 shadow-md space-y-4 text-gray-800">
+                        <input type='text' placeholder='আপনার নাম লিখুন'
                             className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" />
-                        <input type='email' placeholder='Email'
+                        <input type='email' placeholder='আপনার ইমেল বা মোবাইল নম্বর লিখুন'
                             className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" />
-                        <input type='text' placeholder='Subject'
-                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" />
-                        <textarea placeholder='Message' rows="6"
+                        {/* <input type='text' placeholder='Subject'
+                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" /> */}
+                        <textarea placeholder='এখানে আপনার বার্তা লিখুন' rows="6"
                             className="w-full rounded-md px-6 bg-[#f0f1f2] text-sm pt-3 outline-none"></textarea>
                         <button type='button'
                             className="text-gray-800 bg-yellow-300 hover:bg-yellow-400 font-semibold rounded-md text-sm px-6 py-3 block w-full">Send
@@ -26,9 +25,9 @@ export default function Contact() {
                     </form>
                 </div>
 
-                <div className="z-10 relative lg:col-span-2">
-                    <img src="https://readymadeui.com/images/analtsis.webp" className="w-3/4 object-contain block mx-auto" />
-                </div>
+                {/* <div className="z-10 relative lg:col-span-2">
+                    <img src="https://readymadeui.com/images/analtsis.webp" className="w-2/4 object-contain block mx-auto" />
+                </div> */}
             </div>
         </div>
    </section>
