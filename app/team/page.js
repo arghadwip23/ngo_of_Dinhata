@@ -1,28 +1,44 @@
-import React from 'react'
+'use client'
+import {React,useEffect,useState} from 'react'
+import teamdata from '@/util/arghafire'
+import { getDocs, collection } from "firebase/firestore"; 
+
 
 export default function Team() {
-    const team = [
-        {
-            name :"abc",
-            position: "member",
-            profile: "https://ayandip33.github.io/image/1.png"
-        },
-        {
-            name :"abc",
-            position: "member",
-            profile: "https://ayandip33.github.io/image/17.png"
-        },
-        {
-            name :"abc",
-            position: "member",
-            profile: "https://ayandip33.github.io/image/15.png"
-        },
-        {
-            name :"abc",
-            position: "member",
-            profile: "https://ayandip33.github.io/image/15.png"
+    // const team = [
+    //     {
+    //         name :"abc",
+    //         position: "member",
+    //         profile: "https://ayandip33.github.io/image/1.png"
+    //     },
+    //     {
+    //         name :"abc",
+    //         position: "member",
+    //         profile: "https://ayandip33.github.io/image/17.png"
+    //     },
+    //     {
+    //         name :"abc",
+    //         position: "member",
+    //         profile: "https://ayandip33.github.io/image/15.png"
+    //     },
+    //     {
+    //         name :"abc",
+    //         position: "member",
+    //         profile: "https://ayandip33.github.io/image/15.png"
+    //     }
+    // ]
+
+    const [teamMembers,setTeam] = useState([]);
+    useEffect(()=>{
+        const getTeams = async ()=>{
+            const snap = await getDocs(collection(teamdata,"team"));
+            await setTeam(snap.docs);
+            console.log(snap.docs[0].data());
+            
         }
-    ]
+        getTeams();
+
+    },[])
   return (
     <section className='md:p-10'>
     <div className='m-6 lg:mx-20'>
@@ -31,13 +47,13 @@ export default function Team() {
     </div>
     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24 px-20'>
         {
-            team.map((members,index)=>(
+            teamMembers.map((members,index)=>(
                 <div key={index} className="  relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300 border ">
                
-                <img src={members.profile} alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
+                <img src={members.data().profile} alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
                     <div className="py-4">
-                        <h4 className="text-gray-800 text-base font-extrabold">{members.name}</h4>
-                        <p className="text-gray-800 text-xs mt-1">{members.position}</p>
+                        <h4 className="text-gray-800 text-base font-extrabold">{members.data().name}</h4>
+                        <p className="text-gray-800 text-xs mt-1">{members.data().position}</p>
 
                         <div className="space-x-4 mt-4">
                             <button type="button"

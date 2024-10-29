@@ -17,6 +17,7 @@ export default function Nav() {
         <div className="hidden md:flex items-center space-x-6">
           <Link href="/ " className="text-gray-500 hover:text-yellow-500">Home</Link>
           <Link href="/about" className="text-gray-500 hover:text-yellow-500">About Us</Link>
+          <Link href="/team" className="text-gray-500 hover:text-yellow-500">Our Team</Link>
           <Link href="/gallery" className="text-gray-500 hover:text-yellow-500">Gallery</Link>
           <a href="#" className="text-gray-500 hover:text-yellow-500">Login</a>
           <Link href="/donate" className="px-4 py-2 bg-yellow-500 text-white rounded hover:scale-105 transition-all duration-300">Donate Us</Link>
@@ -69,8 +70,9 @@ export default function Nav() {
                 ></path>
               </svg>
             </button>
-            <Link href="./" className="block text-gray-500 hover:text-yellow-500">Home</Link>
-            <Link href="./about" className="block text-gray-500 hover:text-yellow-500">About Us</Link>
+            <Link href="/" className="block text-gray-500 hover:text-yellow-500">Home</Link>
+            <Link href="/about" className="block text-gray-500 hover:text-yellow-500">About Us</Link>
+            <Link href="/team" className="block text-gray-500 hover:text-yellow-500">Our Team</Link>
             <Link href="./gallery" className="block text-gray-500 hover:text-yellow-500">Gallery</Link>
             <a href="#" className="block text-gray-500 hover:text-yellow-500">Login</a>
             <Link href="./donate" className="block text-white bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-500">Donate Us</Link>

@@ -1,5 +1,5 @@
 'use client'
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import { getStorage,getMetadata,ref,getDownloadURL } from 'firebase/storage';
 import app from "@/util/firebase"
 
@@ -15,28 +15,28 @@ function removeURLEncoding(url) {
 const fileName =removeURLEncoding(params.id);
 const storage = getStorage(app);
 const fileref = ref(storage,`gallery/${fileName}`)
-
-getDownloadURL(fileref).then((data)=>{
-    console.log(data);
-    setImgLink(data);
-    // getMetadata(fileref).then((hi)=>{
-    //     setMeta(hi);
-    //     console.log(metadata);
-        
-    // })
+useEffect(()=>{
+ const fetchInfo = async ()=>{
+    const link = await getDownloadURL(fileref);
+    const info = await getMetadata(fileref);
+    await setImgLink(link);
+    await setMeta(info);
+    await console.log(info);
     
-})
 
-
+ }
+ fetchInfo()
+},[])
 
 
   return (
     <section className='grid grid-cols-1 md:grid-cols-2 p-10'> 
-    <div className='h-1/2 overflow-hidden object-contain border text-center '>
-    <img src={imgLink} alt="" className='h-full object-contain mx-auto'  />
+    <div className='  border text-center '>
+    <img src={imgLink} alt="" className='w-360 h-360 object-contain mx-auto'  />
     </div>
     <div className='text-black '>
-        {metadata.caption}
+    <h2 className='text-2xl'>{metadata.customMetadata.caption}</h2>
+        
     </div>
     </section>
   )
