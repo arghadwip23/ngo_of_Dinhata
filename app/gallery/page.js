@@ -6,7 +6,7 @@ import { getStorage,ref,getDownloadURL,listAll,getMetadata } from "firebase/stor
 
 
 
-export default function gallery() {
+export default function Gallery() {
   const [imageUrls, setImageUrls] = useState([]);
   const [loading, setLoading] = useState(true);
   const storage = getStorage(app)
