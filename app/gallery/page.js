@@ -1,5 +1,6 @@
 'use client'
 import {React,useEffect,useState} from 'react'
+import Link from 'next/link';
 import app from '@/util/firebase'
 import { getStorage,ref,getDownloadURL,listAll,getMetadata } from "firebase/storage";
 
@@ -22,8 +23,9 @@ export default function Gallery() {
            const metadata = await getMetadata(imageRef);
            return{
             link:url,
-            caption : metadata.customMetadata?.caption||"no caption",
-            dateCreated:metadata.timeCreated? new Date(metadata.timeCreated).toLocaleDateString():"unknown",
+            caption : metadata.customMetadata?.caption||"caption not available",
+            filename : metadata.name,
+            dateCreated:metadata.timeCreated? new Date(metadata.timeCreated).toLocaleDateString():"date not available",
            };
           })
         );
@@ -51,20 +53,23 @@ export default function Gallery() {
       {loading ? (
         <p className="text-center text-black">Loading images...</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 masonry ">
           {imageUrls.map((image, index) => (
-            <div key={index}>
+
+            <div key={index} className=''>
+              <Link href={`./gallery/${image.filename}`}>
               <img
                 src={image.link}
                 alt={`Gallery Image ${index + 1}`}
-                className=" transition-transform duration-300 hover:scale-105 rounded shadow-lg "
+                className=" transition-transform duration-300 hover:scale-105 rounded p-3 w-full h-80 object-contain bg-white "
               /> 
               <div className="p-2 bg-white shadow-inner">
-                <p className="text-gray-700 font-semibold text-center">{image.caption}</p>
-                <p className="text-gray-500 text-xs text-center">
+                <p className="text-gray-700 font-semibold ">{image.caption}</p>
+                <p className="text-gray-500 text-xs ">
                   {image.dateCreated}
                 </p>
               </div> 
+              </Link>
               </div>
             
           ))}

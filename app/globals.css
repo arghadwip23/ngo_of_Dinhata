@@ -30,6 +30,19 @@ font-family: 'midiumbengali';
   font-weight: bold;
   
 }
+/* Custom CSS for Masonry Layout */
+/* .masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 10px;
+}
+
+.masonry > * {
+  margin-bottom: 16px;
+  grid-row-end: span 3;
+} */
+
+
 
 @font-face {
   font-family: 'BengaliFont'; /* Name of the font family */

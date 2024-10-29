@@ -1,11 +1,12 @@
 'use client'
 import React from 'react'
+import Link from 'next/link';
 import { IKImage } from 'imagekitio-next'
 
 export default function Teams() {
  const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
   return (
-    <div className="font-[sans-serif] max-w-5xl pt-20 px-10 max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4">
+    <div className=" max-w-5xl pt-20 px-10 max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4">
             <div className="max-w-2xl mx-auto text-center">
                 <h2 className="text-gray-800 sm:text-4xl text-2xl font-bengalifont">আমাদের সদস্য</h2>
                 {/* <p className="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p> */}
@@ -163,6 +164,11 @@ export default function Teams() {
                     </div>
                 </div>
             </div>
+            <div className=' text-center mt-9 pt-4'>
+            <Link href="/team" className='border p-2 font-semibold text-black font-medium text-center'>আরও দেখুন</Link>
+
+            </div>
+
         </div>
   )
 }
