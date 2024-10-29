@@ -12,7 +12,7 @@ export default function Teams() {
             </div>
 
             <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24">
-                <div className="bg-gray-200 relative rounded">
+                <div className="  relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300">
                 {/* <img src="https://readymadeui.com/team-2.webp" className="w-32 h-32 rounded-full inline-block -mt-12" /> */}
 
                 {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/15.png" width={500} height={500} alt="image of president" /> */}
@@ -50,7 +50,7 @@ export default function Teams() {
                     </div>
                 </div>
 
-                <div className="bg-gray-200 relative rounded">
+                <div className=" relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300">
                 {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/3.png" width={500} height={500} alt="image of president" /> */}
                 <img src="https://ayandip33.github.io/image/12.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 
@@ -87,7 +87,7 @@ export default function Teams() {
                     </div>
                 </div>
 
-                <div className="bg-gray-200 relative rounded">
+                <div className=" relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300">
                 {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/1.png" width={500} height={500} alt="image of president" /> */}
                 <img src="https://ayandip33.github.io/image/1.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 
@@ -124,7 +124,7 @@ export default function Teams() {
                     </div>
                 </div>
 
-                <div className="bg-gray-200 relative rounded">
+                <div className=" relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300 ">
                 {/* <IKImage urlEndpoint={urlEndpoint}  className="   rounded-full  w-32 h-32 inline-block -mt-12  " path="TEAM/17.png" width={500} height={500} alt="image of president" /> */}
                 <img src="https://ayandip33.github.io/image/17.png" alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
 

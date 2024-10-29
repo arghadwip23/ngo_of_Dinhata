@@ -11,7 +11,7 @@ export default function Description() {
 				
 				<h3 className="text-4xl counterTitle">আমরা কারা?</h3>
 				<p className="my-6 dark:text-gray-600 text-xl">আমরা দিনহাটার কিছু স্বার্থহীন সমাজসেবক , মূলত পেশাগত ভাবে বেশির ভাগই শিক্ষক। নিজেদের কর্মসূত্রে আমরা এখানকার মানুষের আবশ্যকতা , দুর্বলতা এবং কিছু দরিদ্র গোষ্ঠীর অসহায়তার সাথে অবগত হওয়ায় সমাজে বদল আনার জন্য নিজেদের যোগদান দেওয়ার লক্ষ্যে আরো দৃঢ় হয় যায় । যার ফলস্বরূপ ২০২০ সালে দায়বদ্ধ ওয়েলফেয়ার সোসাইটির প্রতিস্থাপন করা হয়.</p>
-				<Link href={`/about`}>visit us</Link>
+				<Link href={`/about`} ><button className=' inline-block rounded border p-4 custombtn'>আমাদের সম্পর্কে আরও জানুন  </button></Link>
 			</div>
 		</div>
 		<div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse hover:shadow-xl hover:scale-105 transition-all duration-300">
@@ -20,7 +20,7 @@ export default function Description() {
 				
 				<h3 className="text-4xl counterTitle " >আমাদের কাজ </h3>
 				<p className="my-6 text-xl text-gray-600"> বিগত কয়েক বছর ধরে দিনহাটার উন্নয়নের জন্য আমরা দায়বদ্ধ ওয়েলফেয়ার সোসাইটি অনবরত প্রচেষ্টা করে যাচ্ছি। তা সাংস্কৃতিক দিকথেকে হোক বা শিক্ষার দিকেই হোক, আমাদের সংগঠন নিজের সর্বদাই নিজের সেরা প্রদান করেছি আমাদের কিছু উল্লেখযোগ্য কাজ হলো দিনহাটার <b>মাধ্যমিক প্রার্থীদের  জন্য মক টেস্ট আয়োজন করা</b> , যাতে তারা পরীক্ষার জন্য পুরোপুরি ভাবে প্রস্তুত হতে পারে । তারপর পূজোয় বস্ত্র বিতরন করা এবং সকলের জন্য রাখিবন্ধন আয়োজন করা </p>
-				<button type="button" className="self-start">Action</button>
+				<Link href={'./gallery'}><button type="button" className="self-start border p-4 custombtn">আমাদের গ্যালারি দেখুন</button></Link>
 			</div>
 		</div>
 		<div className="flex flex-col overflow-hidden rounded-md shadow-md lg:flex-row hover:scale-105 hover:shadow-lg transition-all duration-300">
@@ -29,7 +29,7 @@ export default function Description() {
 				
 				<h3 className="text-4xl font-medium counterTitle pt-2">শিক্ষার আলো</h3>
 				<p className="my-6 dark:text-gray-600 text-xl">আপনি কি একজন শিক্ষার্থী এবং অর্থের অভাবে পড়াশোনা চালিয়ে যেতে সমস্যায় পড়ছেন? দায়বদ্ধ ওয়েলফেয়ার সোসাইটি আপনাদের পাশে রয়েছে। আমরা আর্থিকভাবে অসহায় এবং প্রান্তিক ছাত্রছাত্রীদের সাহায্য করতে প্রস্তুত, যাতে তারা নিরবচ্ছিন্নভাবে শিক্ষার আলোয় আলোকিত হতে পারে। যদি আপনাকে পড়াশোনার জন্য আর্থিক সহায়তার প্রয়োজন হয়, তবে নির্দ্বিধায় আমাদের সাথে যোগাযোগ করুন। শিক্ষার মাধ্যমে ভবিষ্যৎ নির্মাণে আপনাদের পাশে থাকার অঙ্গীকার আমাদের। </p>
-				<button type="button" className="self-start">Action</button>
+				<Link href={'#contact'}><button type="button" className="self-start border p-4 custombtn">আমাদের সাথে যোগাযোগ করুন</button></Link>
 			</div>
 		</div>
 	</div>
