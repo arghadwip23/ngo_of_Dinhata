@@ -18,6 +18,13 @@ try {
         httpOnly:true
     })
     return res;
+   }else{
+    const res = NextResponse.json({
+        message:"failed",
+        status:200,
+        login : false
+    })
+    return res;
    }
 
 } catch (error) {

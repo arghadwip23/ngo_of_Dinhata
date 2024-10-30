@@ -28,6 +28,8 @@ const handleSubmit=async (event)=>{
    const respon = await a.json();
    if (respon.login){
     router.push('/gallery')
+   }else{
+    alert("please enter corrrect id password")
    }
    
 }
