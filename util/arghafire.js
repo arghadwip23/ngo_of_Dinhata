@@ -15,6 +15,6 @@ const firebaseConfig = {
   };
 
   const app = initializeApp(firebaseConfig);
-  const teamdata = getFirestore(app) ;
-  export default teamdata;
+  
+  export default app;
   
