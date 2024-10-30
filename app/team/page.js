@@ -5,28 +5,7 @@ import { getDocs, collection } from "firebase/firestore";
 
 
 export default function Team() {
-    // const team = [
-    //     {
-    //         name :"abc",
-    //         position: "member",
-    //         profile: "https://ayandip33.github.io/image/1.png"
-    //     },
-    //     {
-    //         name :"abc",
-    //         position: "member",
-    //         profile: "https://ayandip33.github.io/image/17.png"
-    //     },
-    //     {
-    //         name :"abc",
-    //         position: "member",
-    //         profile: "https://ayandip33.github.io/image/15.png"
-    //     },
-    //     {
-    //         name :"abc",
-    //         position: "member",
-    //         profile: "https://ayandip33.github.io/image/15.png"
-    //     }
-    // ]
+   
 
     const [teamMembers,setTeam] = useState([]);
     useEffect(()=>{

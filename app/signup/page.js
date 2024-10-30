@@ -1,6 +1,6 @@
 'use client'
 import {React, useEffect, useState} from 'react'
-import verify from '@/util/verify'
+
 import { useRouter } from 'next/navigation'
 
 export default function Signup() {
@@ -27,7 +27,7 @@ const handleSubmit=async (event)=>{
 
    const respon = await a.json();
    if (respon.login){
-    router.push('/gallery')
+    router.push('/dashboard')
    }else{
     alert("please enter corrrect id password")
    }
