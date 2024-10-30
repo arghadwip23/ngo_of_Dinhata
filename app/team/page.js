@@ -1,7 +1,7 @@
 'use client'
 import {React, useEffect, useState} from 'react';
 import { getFirestore,getDoc,collection } from "firebase/firestore";
-import japp from '@/util/arghafire';
+import {japp} from '@/util/arghafire';
 
 
 
