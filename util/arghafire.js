@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+
 
 
 
@@ -14,7 +14,7 @@ const firebaseConfig = {
     measurementId: "G-BH23ZFD2KB"
   };
 
-  const app = initializeApp(firebaseConfig);
+  const japp = initializeApp(firebaseConfig);
   
-  export default app;
+  export default japp;
   
