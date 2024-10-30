@@ -1,9 +1,21 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Link from "next/link";
+
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [userstatus , setUserstatus] = useState(false);
+
+  useEffect(()=>{
+    async function checkverifucation() {
+      const response = await fetch('/api/verify');
+      const data = await response.json();
+      setUserstatus(data.verified);
+    }
+    checkverifucation();
+
+  },[])
 
   return (
     <nav className="bg-white shadow-md">
@@ -19,7 +31,12 @@ export default function Nav() {
           <Link href="/about" className="text-gray-500 hover:text-yellow-500">About Us</Link>
           <Link href="/team" className="text-gray-500 hover:text-yellow-500">Our Team</Link>
           <Link href="/gallery" className="text-gray-500 hover:text-yellow-500">Gallery</Link>
-          <a href="#" className="text-gray-500 hover:text-yellow-500">Login</a>
+          {userstatus?(
+            <Link href="/dashboard" className="text-gray-500 hover:text-yellow-500">Dash Board</Link>
+          ):(
+            <Link href='/signup' className="text-gray-500 hover:text-yellow-500">Log in</Link>
+          )}
+          <a href="#" className="text-gray-500 hover:text-yellow-500"></a>
           <Link href="/donate" className="px-4 py-2 bg-yellow-500 text-white rounded hover:scale-105 transition-all duration-300">Donate Us</Link>
         </div>
 
@@ -73,9 +90,13 @@ export default function Nav() {
             <Link href="/" className="block text-gray-500 hover:text-yellow-500">Home</Link>
             <Link href="/about" className="block text-gray-500 hover:text-yellow-500">About Us</Link>
             <Link href="/team" className="block text-gray-500 hover:text-yellow-500">Our Team</Link>
-            <Link href="./gallery" className="block text-gray-500 hover:text-yellow-500">Gallery</Link>
-            <a href="#" className="block text-gray-500 hover:text-yellow-500">Login</a>
-            <Link href="./donate" className="block text-white bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-500">Donate Us</Link>
+            <Link href="/gallery" className="block text-gray-500 hover:text-yellow-500">Gallery</Link>
+            {userstatus?(
+              <Link href="/dashboard" className="block text-gray-500 hover:text-yellow-500">Dash Board</Link>
+            ):(
+              <Link href="/signup" className="block text-gray-500 hover:text-yellow-500">Log in</Link>
+            )}
+            <Link href="/donate" className="block text-white bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-500">Donate Us</Link>
           </div>
         </div>
       )}
