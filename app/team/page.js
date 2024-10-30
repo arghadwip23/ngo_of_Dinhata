@@ -1,7 +1,6 @@
 'use client'
-import {React,useEffect,useState} from 'react'
-import teamdata from '@/util/arghafire'
-import { getDocs, collection } from "firebase/firestore"; 
+import React from 'react'
+
 
 
 export default function Team() {
