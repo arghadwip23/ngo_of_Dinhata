@@ -7,18 +7,18 @@ import app from '@/util/arghafire';
 
 
 export default function Team() {
-    const storage = getFirestore(app);
-    const [teamMembers,setTeam] = useState([]);
-    useEffect(()=>{
-        const getTeams = async ()=>{
-            const snap = await getDocs(collection(storage,"team"));
-            await setTeam(snap.docs);
-            console.log(snap.docs[0].data());
+    // const storage = getFirestore(app);
+    // const [teamMembers,setTeam] = useState([]);
+    // useEffect(()=>{
+    //     const getTeams = async ()=>{
+    //         const snap = await getDocs(collection(storage,"team"));
+    //         await setTeam(snap.docs);
+    //         console.log(snap.docs[0].data());
             
-        }
-        getTeams();
+    //     }
+    //     getTeams();
 
-    },[])
+    // },[])
   return (
     <section className='md:p-10'>
     <div className='m-6 lg:mx-20'>
