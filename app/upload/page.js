@@ -1,119 +1,114 @@
 "use client"
 import React, { useState } from "react";
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
-import app from "@/util/firebase"; // Import your Firebase storage config
+import db  from "@/util/firebase"; // Firebase config file
+import { collection, addDoc } from "firebase/firestore";
+//import { v4 as uuidv4 } from "uuid"; // for unique IDs
 
-const ImageUploader = () => {
-  const storage = getStorage(app)
-  const [imageFile, setImageFile] = useState(null);
+export default function ImageUpload(){
+  const [image, setImage] = useState(null);
+  const [uploaderName, setUploaderName] = useState("");
   const [caption, setCaption] = useState("");
-  const [userName, setUserName] = useState("");
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const handleFileChange = (e) => {
-    setImageFile(e.target.files[0]);
+  // Convert image to Base64
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setImage(reader.result);
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleUpload = () => {
-    if (!imageFile || !caption || !userName) {
-      setMessage("Please fill in all fields before uploading.");
+  // Handle the upload
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    if (!image || !uploaderName || !caption) {
+      setStatus("All fields are required.");
       return;
     }
+    
+    setLoading(true);
+    setStatus("Uploading...");
 
-    const storageRef = ref(storage, `gallery/${imageFile.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, imageFile, {
-      customMetadata: {
-        caption: caption,
-        user: userName,
-      },
-    });
+    try {
+      // Add document to Firestore
+     const result =  await addDoc(collection(db, "gallery"), {
+        
+        image,
+        uploaderName,
+        caption,
+        date: new Date().toISOString(),
+      });
+      await console.log(result);
+      
+      setStatus("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+      setStatus("Error uploading image.");
+    }
 
-    setUploading(true);
-    setMessage("");
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setUploadProgress(progress);
-      },
-      (error) => {
-        console.error("Upload failed:", error);
-        setMessage("Error uploading image.");
-        setUploading(false);
-      },
-      () => {
-        setMessage("Upload successful!");
-        setUploading(false);
-        setUploadProgress(0);
-        setImageFile(null);
-        setCaption("");
-        setUserName("");
-      }
-    );
+    // Reset form
+    setLoading(false);
+    setImage(null);
+    setUploaderName("");
+    setCaption("");
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h2 className="text-2xl font-bold text-center text-blue-800 mb-8">
-        ছবি আপলোড করুন
-      </h2>
+    <div className="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
+      <h2 className="text-2xl font-bold text-yellow-500 mb-4">ছবি আপলোড করুন</h2>
 
-      <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold mb-2">Uploader Name</label>
+      <form
+        onSubmit={handleUpload}
+        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md space-y-4"
+      >
+        <div>
+          <label className="block font-medium text-yellow-600 mb-2">আপলোডারের নাম</label>
           <input
             type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Your name"
+            value={uploaderName}
+            onChange={(e) => setUploaderName(e.target.value)}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold mb-2">Caption</label>
+        <div>
+          <label className="block font-medium text-yellow-600 mb-2">ক্যাপশন</label>
           <input
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
-            placeholder="Image caption"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 font-semibold mb-2">Select Image</label>
-          <input type="file" onChange={handleFileChange} />
+        <div>
+          <label className="block font-medium text-yellow-600 mb-2">ছবি নির্বাচন করুন</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
+          />
         </div>
 
-        {uploading && (
-          <div className="mb-4">
-            <div className="h-4 relative max-w-full rounded bg-gray-300">
-              <div
-                style={{ width: `${uploadProgress}%` }}
-                className="absolute h-full bg-green-500 rounded"
-              ></div>
-            </div>
-            <p className="text-center text-sm text-gray-700 mt-2">
-              Uploading: {Math.round(uploadProgress)}%
-            </p>
-          </div>
+        {loading ? (
+          <p className="text-center text-yellow-600 font-medium">Uploading...</p>
+        ) : (
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-yellow-500 text-white rounded-md font-semibold hover:bg-yellow-600 transition duration-200"
+          >
+            আপলোড করুন
+          </button>
         )}
+      </form>
 
-        <button
-          onClick={handleUpload}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-          disabled={uploading}
-        >
-          {uploading ? "Uploading..." : "Upload Image"}
-        </button>
-
-        {message && <p className="text-center mt-4 text-blue-700">{message}</p>}
-      </div>
+      {status && <p className="mt-4 text-yellow-700 font-medium">{status}</p>}
     </div>
   );
 };
 
-export default ImageUploader;
+
