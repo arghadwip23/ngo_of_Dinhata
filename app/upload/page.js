@@ -1,114 +1,122 @@
-"use client"
-import React, { useState } from "react";
-import db  from "@/util/firebase"; // Firebase config file
-import { collection, addDoc } from "firebase/firestore";
-//import { v4 as uuidv4 } from "uuid"; // for unique IDs
 
-export default function ImageUpload(){
-  const [image, setImage] = useState(null);
-  const [uploaderName, setUploaderName] = useState("");
-  const [caption, setCaption] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+'use client';
+import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
-  // Convert image to Base64
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(reader.result);
-      reader.readAsDataURL(file);
-    }
-  };
+// Initialize Supabase client
+const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
 
-  // Handle the upload
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    if (!image || !uploaderName || !caption) {
-      setStatus("All fields are required.");
-      return;
-    }
-    
-    setLoading(true);
-    setStatus("Uploading...");
+export default function PhotoUpload() {
+    const [file, setFile] = useState(null);
+    const [caption, setCaption] = useState('');
+    const [uploaderName, setUploaderName] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
+   
+    // Handle file selection
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
 
-    try {
-      // Add document to Firestore
-     const result =  await addDoc(collection(db, "gallery"), {
-        
-        image,
-        uploaderName,
-        caption,
-        date: new Date().toISOString(),
-      });
-      await console.log(result);
-      
-      setStatus("Image uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading image: ", error);
-      setStatus("Error uploading image.");
-    }
+    // Handle form submission
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        if (!file || !caption || !uploaderName) {
+            setMessage('All fields are required');
+            return;
+        }
 
-    // Reset form
-    setLoading(false);
-    setImage(null);
-    setUploaderName("");
-    setCaption("");
-  };
+        setLoading(true);
+        setMessage('');
 
-  return (
-    <div className="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
-      <h2 className="text-2xl font-bold text-yellow-500 mb-4">ছবি আপলোড করুন</h2>
+        try {
+            // Upload the image file to Supabase Storage
+            const fileName = `${Date.now()}-${file.name}`;
+            const { data: storageData, error: storageError } = await supabase
+                .storage
+                .from('gallery')
+                .upload(`gallery/${fileName}`, file);
 
-      <form
-        onSubmit={handleUpload}
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md space-y-4"
-      >
-        <div>
-          <label className="block font-medium text-yellow-600 mb-2">আপলোডারের নাম</label>
-          <input
-            type="text"
-            value={uploaderName}
-            onChange={(e) => setUploaderName(e.target.value)}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
-          />
+            if (storageError) throw storageError;
+
+            // Get the public URL of the uploaded image
+            const { data: urlData } = await supabase
+                .storage
+                .from('gallery')
+                .getPublicUrl(`gallery/${fileName}`);
+
+            const imageUrl = urlData.publicUrl;
+
+            // Insert metadata into Supabase database
+            const { data: dbData, error: dbError } = await supabase
+                .from('images')
+                .insert([
+                    {
+                        caption,
+                        uploader_name: uploaderName,
+                        image_url: imageUrl,
+                        upload_date: new Date().toISOString(),
+                    },
+                ])
+                .single();
+
+            if (dbError) throw dbError;
+
+            // Success message and reset fields
+            setMessage('Image uploaded successfully!');
+            setFile(null);
+            setCaption('');
+            setUploaderName('');
+        } catch (error) {
+            setMessage(`Error: ${error.message}`);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+            <h1 className="text-xl font-semibold mb-4">Upload Image</h1>
+            <form onSubmit={handleUpload} className="space-y-4">
+                <div>
+                    <label className="block text-gray-700">Caption</label>
+                    <input
+                        type="text"
+                        value={caption}
+                        onChange={(e) => setCaption(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block text-gray-700">Uploader Name</label>
+                    <input
+                        type="text"
+                        value={uploaderName}
+                        onChange={(e) => setUploaderName(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block text-gray-700">Choose Image</label>
+                    <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                        accept="image/*"
+                        required
+                    />
+                </div>
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+                >
+                    {loading ? 'Uploading...' : 'Upload'}
+                </button>
+                {message && <p className="text-center mt-4 text-gray-600">{message}</p>}
+            </form>
         </div>
-
-        <div>
-          <label className="block font-medium text-yellow-600 mb-2">ক্যাপশন</label>
-          <input
-            type="text"
-            value={caption}
-            onChange={(e) => setCaption(e.target.value)}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
-          />
-        </div>
-
-        <div>
-          <label className="block font-medium text-yellow-600 mb-2">ছবি নির্বাচন করুন</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-500"
-          />
-        </div>
-
-        {loading ? (
-          <p className="text-center text-yellow-600 font-medium">Uploading...</p>
-        ) : (
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-yellow-500 text-white rounded-md font-semibold hover:bg-yellow-600 transition duration-200"
-          >
-            আপলোড করুন
-          </button>
-        )}
-      </form>
-
-      {status && <p className="mt-4 text-yellow-700 font-medium">{status}</p>}
-    </div>
-  );
-};
-
-
+    );
+}
