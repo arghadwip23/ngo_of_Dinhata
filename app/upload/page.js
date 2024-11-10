@@ -1,10 +1,10 @@
 
 'use client';
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import supabase from '@/util/supabase';
 
 // Initialize Supabase client
-const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
+//const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
 
 export default function PhotoUpload() {
     const [file, setFile] = useState(null);

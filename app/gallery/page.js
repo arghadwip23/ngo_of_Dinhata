@@ -1,14 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import supabase from '@/util/supabase';
 import Link from 'next/link';
 //import dayjs from 'dayjs'; // for date formatting
 
 // Initialize Supabase client
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_API
-);
 
 export default function Page() {
     const [loading, setLoading] = useState(true);
