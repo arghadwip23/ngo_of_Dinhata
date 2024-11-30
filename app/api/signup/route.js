@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import app from '@/util/firebase';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 export async function POST(request) {
     let data = await request.json();
-    const auth = getAuth(app);
+  
     let email = data.email;
     let password = data.password;
 try {

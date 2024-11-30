@@ -6,7 +6,7 @@ import supabase from '@/util/supabase';
 // Initialize Supabase client
 //const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
 
-export default function PhotoUpload() {
+export default function Upload() {
     const [file, setFile] = useState(null);
     const [caption, setCaption] = useState('');
     const [uploaderName, setUploaderName] = useState('');
@@ -48,25 +48,30 @@ export default function PhotoUpload() {
             const imageUrl = urlData.publicUrl;
 
             // Insert metadata into Supabase database
-            const { data: dbData, error: dbError } = await supabase
-                .from('images')
-                .insert([
-                    {
-                        caption,
-                        uploader_name: uploaderName,
-                        image_url: imageUrl,
-                        upload_date: new Date().toISOString(),
-                    },
-                ])
-                .single();
-
-            if (dbError) throw dbError;
-
-            // Success message and reset fields
-            setMessage('Image uploaded successfully!');
+            const imdata={
+                    caption : caption,
+                    uploader_name: uploaderName,
+                    image_url: imageUrl,
+                    uploaded_at : new Date(),
+            }
+            let a = await fetch("/api/upload",{
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body : JSON.stringify(imdata)
+               });
+            let result= await a.json();
+            if (result.ok){
+                // Success message and reset fields
+            setMessage(result.message);
             setFile(null);
             setCaption('');
             setUploaderName('');
+
+            }
+
+            
         } catch (error) {
             setMessage(`Error: ${error.message}`);
         } finally {
