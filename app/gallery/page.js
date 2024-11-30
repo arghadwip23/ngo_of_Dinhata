@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import supabase from '@/util/supabase';
+//import supabase from '@/util/supabase';
 import Link from 'next/link';
 
 
@@ -11,6 +11,8 @@ export default function Page() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [images, setImages] = useState([]);
+    const [totalPages , setTotalPages] = useState(1);
+
     const [currentPage, setCurrentPage] = useState(1);
     const imagesPerPage = 15;
 
@@ -18,13 +20,29 @@ export default function Page() {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const { data, error } = await supabase
-                    .from("images")
-                    .select("*")
-                    .order("upload_date", { ascending: false });
+                // const { data, error } = await supabase
+                //     .from("images")
+                //     .select("*")
+                //     .order("upload_date", { ascending: false });
+                let a = await fetch("/api/sendphoto",{
+                    method: "POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                    body : JSON.stringify({
+                        pageNum:currentPage,
+                        limit:10
+                    })
+                   });
+                let result= await a.json();
+                if(result.ok){
+                    setImages(result.photos);
+                    setTotalPages(result.totalPage);
 
-                if (error) throw error;
-                setImages(data);
+                }else{
+
+                }
+                    
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -32,14 +50,10 @@ export default function Page() {
             }
         };
         fetchImages();
-    }, []);
+    }, [currentPage]);
 
     // Calculate total pages and get images for current page
-    const totalPages = Math.ceil(images.length / imagesPerPage);
-    const currentImages = images.slice(
-        (currentPage - 1) * imagesPerPage,
-        currentPage * imagesPerPage
-    );
+    
 
     // Handle pagination
     const goToNextPage = () => {
@@ -59,20 +73,20 @@ export default function Page() {
             ) : (
                 <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-6">
-                        {currentImages.map((image, index) => (
+                        {images.map((image, index) => (
                             <div key={index} className="bg-yellow-100 border border-yellow-300 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                                <Link href={`/gallery/${image.id}`}>
+                                <Link href={`/gallery/${image._id}`}>
                                     <img
                                         src={image.image_url}
                                         alt={`Image ${index + 1}`}
-                                        className="w-full h-60 object-cover hover:scale-105 transition-transform duration-300"
+                                        className="w-full h-60 object-contain hover:scale-105 transition-transform duration-300"
                                     />
                                 </Link>
                                 <div className="p-4 bg-yellow-50">
                                     <h2 className="text-lg font-semibold text-yellow-700 truncate">{image.caption}</h2>
                                     <p className="text-sm text-yellow-600">Uploaded by {image.uploader_name}</p>
                                     <p className="text-xs text-yellow-500">
-                                        {image.upload_date}
+                                        {image.uploaded_at}
                                     </p>
                                 </div>
                             </div>
