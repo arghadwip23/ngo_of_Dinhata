@@ -4,7 +4,7 @@ import supabase from '@/util/supabase';
 
 //const supabase = createClient("your-supabase-url", "your-anon-key");
 
-export default function TeamMemberUploader() {
+export default function TeamMemberUploader({alt}) {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
   const [facebook, setFacebook] = useState("");
@@ -62,7 +62,7 @@ export default function TeamMemberUploader() {
     let result= await a.json();
     if (result.ok){
         // Success message and reset fields
-        setUploadStatus("Upload successful! You can now send the object to your API.");
+        setUploadStatus("Upload successful!");
         console.log("Team Member Object:", teamMember);
   
         // Optionally reset the form
@@ -71,6 +71,7 @@ export default function TeamMemberUploader() {
         setFacebook("");
         setInstagram("");
         setPhoto(null);
+        alt.success("Team member has been added succcesfully")
 
     }
 
@@ -82,10 +83,10 @@ export default function TeamMemberUploader() {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded p-6 w-full max-w-md"
+        className="bg-white shadow-lg rounded p-6 w-full max-w-md text-black border  mx-auto"
       >
         <h2 className="text-xl font-bold mb-4 text-center text-yellow-500">Upload Team Member</h2>
         <div className="mb-4">
@@ -145,6 +146,6 @@ export default function TeamMemberUploader() {
           <p className="text-center mt-4 text-sm text-gray-700">{uploadStatus}</p>
         )}
       </form>
-    </div>
+    
   );
 }

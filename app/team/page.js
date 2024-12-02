@@ -1,7 +1,6 @@
 'use client'
 import {React, useEffect, useState} from 'react';
-import { getDocs,collection } from "firebase/firestore";
-import db from '@/util/firebase';
+
 
 
 
@@ -11,9 +10,18 @@ export default function Team() {
     const [teamMembers,setTeam] = useState([]);
     useEffect(()=>{
         const getTeams = async ()=>{
-            const snap = await getDocs(collection(db,"team"));
-            await setTeam(snap.docs);
-            console.log(snap.docs[0].data());
+            const snap = await fetch("api/sendteam");
+            const result = await snap.json();
+            if(result.ok){
+            await setTeam(result.data);
+            console.log(result.data);
+
+
+
+            }else{
+                console.log('some thing wrong');
+                
+            }
             
         }
         getTeams();
@@ -30,10 +38,10 @@ export default function Team() {
             teamMembers.map((members,index)=>(
                 <div key={index} className="  relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300 border ">
                
-                <img src={members.data().profile} alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
+                <img src={members.image} alt="" className='w-24 h-24 rounded-full inline-block -mt-14'/>
                     <div className="py-4">
-                        <h4 className="text-gray-800 text-base font-extrabold">{members.data().name}</h4>
-                        <p className="text-gray-800 text-xs mt-1">{members.data().position}</p>
+                        <h4 className="text-gray-800 text-base font-extrabold">{members.name}</h4>
+                        <p className="text-gray-800 text-xs mt-1">{members.position}</p>
 
                         <div className="space-x-4 mt-4">
                             <button type="button"

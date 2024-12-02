@@ -6,7 +6,7 @@ import supabase from '@/util/supabase';
 // Initialize Supabase client
 //const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
 
-export default function Upload() {
+export default function Upload({alt}) {
     const [file, setFile] = useState(null);
     const [caption, setCaption] = useState('');
     const [uploaderName, setUploaderName] = useState('');
@@ -68,22 +68,25 @@ export default function Upload() {
             setFile(null);
             setCaption('');
             setUploaderName('');
+            alt.success("photo added to gallery successfully");
 
             }
 
             
         } catch (error) {
             setMessage(`Error: ${error.message}`);
+            alt.error("something went worng");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
-            <h1 className="text-xl font-semibold mb-4">Upload Image</h1>
-            <form onSubmit={handleUpload} className="space-y-4">
-                <div>
+        
+            <form onSubmit={handleUpload} className="mx-auto bg-white shadow-lg rounded p-6 w-full max-w-md text-black border ">
+            <h1 className="text-xl text-center text-yellow-500 font-semibold mb-4">Upload Image</h1>
+
+                <div className='mb-4'>
                     <label className="block text-gray-700">Caption</label>
                     <input
                         type="text"
@@ -93,7 +96,7 @@ export default function Upload() {
                         required
                     />
                 </div>
-                <div>
+                <div className='mb-4'>
                     <label className="block text-gray-700">Uploader Name</label>
                     <input
                         type="text"
@@ -103,7 +106,7 @@ export default function Upload() {
                         required
                     />
                 </div>
-                <div>
+                <div className='mb-4'>
                     <label className="block text-gray-700">Choose Image</label>
                     <input
                         type="file"
@@ -116,12 +119,12 @@ export default function Upload() {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+                    className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition-colors"
                 >
                     {loading ? 'Uploading...' : 'Upload'}
                 </button>
                 {message && <p className="text-center mt-4 text-gray-600">{message}</p>}
             </form>
-        </div>
+        
     );
 }
