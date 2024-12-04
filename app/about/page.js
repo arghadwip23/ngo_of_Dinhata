@@ -1,4 +1,8 @@
 import React from 'react'
+export const metadata = {
+  title: "about -us",
+  description: "a ngo from dinhata working hard to improve the society",
+}
 
 export default function absolute() {
   return (

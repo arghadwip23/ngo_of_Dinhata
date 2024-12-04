@@ -1,5 +1,6 @@
 'use client'
 import {React, useEffect, useState} from 'react';
+import Head from 'next/head';
 
 
 
@@ -28,6 +29,13 @@ export default function Team() {
 
     },[])
   return (
+    <>
+    <Head>
+        <title>Our Team</title>
+        <meta name="description" content="Meet the amazing team at Dayboddho Welfare Society!" />
+        <meta name="keywords" content="Dayboddho, NGO, Team, Welfare, Members" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <section className='md:p-10'>
     <div className='m-6 lg:mx-20'>
     <h1 className='font-bengalifont text-black text-4xl mb-4'>আমাদের টিম</h1>
@@ -76,5 +84,6 @@ export default function Team() {
         ):("loading")}
         </div>
     </section>
+    </>
   )
 }
