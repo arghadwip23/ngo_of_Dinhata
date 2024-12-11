@@ -31,6 +31,7 @@ export default function Nav() {
           <Link href="/about" className="text-gray-500 hover:text-yellow-500">About Us</Link>
           <Link href="/team" className="text-gray-500 hover:text-yellow-500">Our Team</Link>
           <Link href="/gallery" className="text-gray-500 hover:text-yellow-500">Gallery</Link>
+          <Link href="/blogs" className="text-gray-500 hover:text-yellow-500">Blog</Link>
           {userstatus?(
             <Link href="/dashboard" className="text-gray-500 hover:text-yellow-500">Dash Board</Link>
           ):(
@@ -91,6 +92,7 @@ export default function Nav() {
             <Link href="/about" className="block text-gray-500 hover:text-yellow-500">About Us</Link>
             <Link href="/team" className="block text-gray-500 hover:text-yellow-500">Our Team</Link>
             <Link href="/gallery" className="block text-gray-500 hover:text-yellow-500">Gallery</Link>
+            <Link href="/blogs" className="block text-gray-500 hover:text-yellow-500">Blog</Link>
             {userstatus?(
               <Link href="/dashboard" className="block text-gray-500 hover:text-yellow-500">Dash Board</Link>
             ):(

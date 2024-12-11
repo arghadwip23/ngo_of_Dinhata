@@ -1,6 +1,38 @@
-import React from 'react'
+'use client'
+import {React,useState} from 'react'
 
-export default function Contact() {
+export default function Contact({tost}) {
+    const [name, setName] = useState("");
+    const [mail,setMail] = useState("");
+    const [message,setMessage] = useState("");
+    const handleSubmit = async()=>{
+        if(name && mail && message){
+            const data = await {
+                name:name,
+                contact:mail,
+                message:message
+            }
+            let a = await fetch("/api/comment",{
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body : JSON.stringify(data)
+               });
+              const result = await a.json();
+              if(result.ok){
+                tost.success("your message has been sent");
+                
+              }else{
+                tost.error("there is something wrong");
+              }
+
+            
+        }else{
+            tost.error("enter all the value")
+        }
+        
+    }
   return (
    <section className='mt-40 mb-20' id='contact'>
     <div className="  ">
@@ -12,14 +44,15 @@ export default function Contact() {
 
                     <form className="mx-auto mt-8 bg-white rounded-lg p-6 border md:mx-20 xl:mx-60 shadow-md space-y-4 text-gray-800">
                         <input type='text' placeholder='আপনার নাম লিখুন'
-                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" />
+                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" onChange={(e)=>setName(e.target.value)} value={name}/>
                         <input type='email' placeholder='আপনার ইমেল বা মোবাইল নম্বর লিখুন'
-                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" />
+                            className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" onChange={(e)=>setMail(e.target.value)} value={mail} />
                         {/* <input type='text' placeholder='Subject'
                             className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none" /> */}
                         <textarea placeholder='এখানে আপনার বার্তা লিখুন' rows="6"
-                            className="w-full rounded-md px-6 bg-[#f0f1f2] text-sm pt-3 outline-none"></textarea>
+                            className="w-full rounded-md px-6 bg-[#f0f1f2] text-sm pt-3 outline-none" onChange={(e)=>setMessage(e.target.value)} value={message}></textarea>
                         <button type='button'
+                            onClick={handleSubmit}
                             className="text-gray-800 bg-yellow-300 hover:bg-yellow-400 font-semibold rounded-md text-sm px-6 py-3 block w-full">Send
                             Message</button>
                     </form>

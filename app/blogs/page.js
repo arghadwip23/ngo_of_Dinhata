@@ -30,7 +30,7 @@ export default function BlogList() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold text-center mb-6">Our Blogs</h1>
+      <h1 className="text-3xl font-bold text-center text-black mb-6">Our Blogs</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map((blog) => (
           <div
@@ -50,7 +50,7 @@ export default function BlogList() {
                 {blog.metaDescription}
               </p>
               <Link href={`/blogs/${blog._id}`}>
-                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+                <button className="mt-4 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
                   Read More
                 </button>
               </Link>
@@ -64,7 +64,7 @@ export default function BlogList() {
         <button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-400 disabled:opacity-50"
         >
           Previous
         </button>
@@ -72,7 +72,7 @@ export default function BlogList() {
         <button
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={page === totalPages}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-300 disabled:opacity-50"
         >
           Next
         </button>

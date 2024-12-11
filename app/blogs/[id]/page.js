@@ -31,14 +31,14 @@ export default function BlogDetails({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 md:p-8">
+    <div className="min-h-screen bg-gray-100 md:p-8 text-black" >
       <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
-        <h1 className="text-3xl font-bold text-gray-800">{blog.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{blog.title}</h1>
         {blog.image && (
           <img
             src={blog.image}
             alt={blog.title}
-            className="w-full h-64 object-cover mt-4 rounded"
+            className="w-full h-64 object-contain bg-gray-400 mt-4 rounded"
           />
         )}
         <div className="mt-4 text-gray-700">
