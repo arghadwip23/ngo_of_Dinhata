@@ -6,13 +6,13 @@ import { IKImage } from 'imagekitio-next'
 export default function Teams() {
  const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
   return (
-    <div className=" max-w-5xl pt-20 px-10 max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4">
+    <div className=" max-w-5xl pt-20 px-5 max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4 ">
             <div className="max-w-2xl mx-auto text-center">
                 <h2 className="text-gray-800 sm:text-4xl text-2xl font-bengalifont">আমাদের সদস্য</h2>
                 {/* <p className="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p> */}
             </div>
 
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24">
+            <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24 px-0">
                 <div className="  relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300">
                 {/* <img src="https://readymadeui.com/team-2.webp" className="w-32 h-32 rounded-full inline-block -mt-12" /> */}
 

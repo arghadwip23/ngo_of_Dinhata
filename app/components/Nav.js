@@ -22,7 +22,7 @@ export default function Nav() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-xl font-semibold">
-          <a href="#" className="text-gray-800">YourLogo</a>
+          <a href="#" className="text-gray-800"><img src="https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/Mask%20group.png" alt="" className="h-10"/></a>
         </div>
 
         {/* Menu Items */}

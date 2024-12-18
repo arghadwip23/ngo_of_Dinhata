@@ -41,7 +41,7 @@ export default function Team() {
     <h1 className='font-bengalifont text-black text-4xl mb-4'>আমাদের টিম</h1>
     <h6 className='text-gray-700'>দিনহাটা এবং আশেপাশের এলাকার মানুষের জীবনযাত্রার মান উন্নয়নে আমরা, দায়বদ্ধ ওয়েলফেয়ার সোসাইটি, একদল স্বপ্নবান এবং উদ্যমী মানুষ একত্রিত হয়েছি। আমাদের টিমের প্রত্যেক সদস্য তাঁদের নিজ নিজ কর্মক্ষেত্রে দক্ষ এবং সমাজের উন্নয়নে একনিষ্ঠভাবে কাজ করে চলেছেন। আমরা শিক্ষার প্রসার, সচেতনতা বৃদ্ধি, এবং অসহায় মানুষদের সহায়তা প্রদানে প্রতিশ্রুতিবদ্ধ। প্রত্যেক সদস্যের নেতৃত্ব, নিষ্ঠা এবং সেবার মানসিকতা আমাদের সংগঠনকে প্রতিদিন আরও শক্তিশালী করে তুলছে।</h6>
     </div>
-    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24 px-20'>
+    <div className='grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24 px-10'>
         {teamMembers?(
             teamMembers.map((members,index)=>(
                 <div key={index} className="  relative rounded hover:scale-105 hover:shadow-xl shadow-inner transition-all duration-300 border ">

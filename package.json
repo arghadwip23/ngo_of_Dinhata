@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./generateVapidKeys.js && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -24,10 +24,13 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-quill": "^2.0.0",
+    "sweetalert2": "^11.15.2",
+    "sweetalert2-react-content": "^5.1.0",
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^11.0.2"
+    "uuid": "^11.0.2",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "eslint": "^8",
