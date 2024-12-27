@@ -1,7 +1,8 @@
 
 'use client';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import supabase from '@/util/supabase';
+import { Option } from 'lucide-react';
 
 // Initialize Supabase client
 //const supabase = createClient( process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_API);
@@ -12,7 +13,21 @@ export default function Upload({alt}) {
     const [uploaderName, setUploaderName] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
+    const [foldees,setFoldrs] = useState([]);
    
+    useEffect(()=>{
+       const getfolders = async()=>{
+        const foldersreq = await fetch("/api/upload");
+        const folders = await foldersreq.json();
+        setFoldrs(folders.data);
+       } 
+       getfolders();
+
+
+    },[])
+
+
+
     // Handle file selection
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -85,6 +100,19 @@ export default function Upload({alt}) {
         
             <form onSubmit={handleUpload} className="mx-auto bg-white shadow-lg rounded p-6 w-full max-w-md text-black border ">
             <h1 className="text-xl text-center text-yellow-500 font-semibold mb-4">Upload Image</h1>
+            <div className='mb-4'>
+                select  the folder: <br />
+                <select name="name" id="" className='border border-black rounded p-2'>
+                   {
+                    foldees.map((folder,key)=>(<option value={folder} key={key}>{folder.name}</option>))
+                   }
+                   
+                </select>
+                <br />
+                <p>or</p>
+                <p>add new folder</p>
+                <input type="text" name="" className='border border-black rounded  p-2' id="" />
+            </div>
 
                 <div className='mb-4'>
                     <label className="block text-gray-700">Caption</label>

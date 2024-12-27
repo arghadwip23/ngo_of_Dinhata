@@ -36,3 +36,23 @@ export async function POST(request) {
     }
     
 }
+export async function GET(res) {
+    try {
+        const client = await clientPromise;
+        const db = client.db("gallery");
+        const collection = db.collection("image");
+        const data = await collection.find().toArray();
+        return NextResponse.json({
+            data:data,
+            status:200,
+            ok:true
+        })
+    } catch (error) {
+        return NextResponse.json({
+            ok:false,
+            status:500,
+            data:[]
+        })
+    }
+    
+}
