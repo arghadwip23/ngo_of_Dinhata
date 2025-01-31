@@ -1,58 +1,85 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-import db from '@/util/firebase';
-import { doc, getDoc } from "firebase/firestore";
+
 
 export default function GalleryDetails({ params }) {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  function removeURLEncoding(url) {
-    return decodeURIComponent(url);
-  }
-
-  const uniqeId = removeURLEncoding(params.id);
-  
-  useEffect(() => {
-    const fetchInfo = async () => {
-      
-      try {
-        const docRef = doc(db,"gallery",uniqeId);
-        const docsnap = await getDoc(docRef);
-        if (docsnap.exists()){
-          setImage(docsnap.data());
-        }else{
-          setError("document not found")
+useEffect(() => {
+    const fetchImage = async () => {
+        try {
+            const res = await fetch(`/api/folder/getimages`,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({id:params.id}),
+            });
+            const data = await res.json();
+            await console.log(data);
+            
+            if (res.ok) {
+                setImage(data.data);
+            } else {
+                setError(data.message);
+            }
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
         }
-      } catch (err) {
-        setError('Failed to load image or metadata');
-        console.error('Error fetching data:', err);
-      } finally {
-        setLoading(false);
-      }
     };
-    fetchInfo();
-  }, [uniqeId]);
+    fetchImage();
+  },[]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  
+
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 p-10">
-      <div className="border text-center">
-        {image ? (
-          <img src={image.image} alt="Gallery item" className="w-360 h-360 object-contain mx-auto" />
-        ) : (
-          <p>Image not available</p>
-        )}
+    <section className="container mx-auto p-4">
+    {loading && (
+      <div className="flex justify-center items-center">
+        <p className="text-lg font-semibold text-gray-600 animate-pulse">
+          Loading...
+        </p>
       </div>
-      <div className="text-black">
-        <h2 className="text-2xl">
-          {image?.caption || 'No caption available'}
-        </h2>
+    )}
+  
+    {error && (
+      <div className="text-center text-red-500 font-semibold">
+        Error: {error}
       </div>
-    </section>
+    )}
+  
+    {image.length > 0 ? (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {image.map((img) => (
+          <div
+            key={img._id}
+            className="bg-white p-2 rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            <img
+              src={img.image_url}
+              alt={img.foldername}
+              className="w-full h-60 object-contain rounded-md"
+            />
+            <p className="text-center text-sm font-medium text-gray-700 mt-2">
+              {img.foldername}
+            </p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      !loading && (
+        <div className="text-center text-gray-600 font-semibold">
+          No images found
+        </div>
+      )
+    )}
+  </section>
+  
   );
 }

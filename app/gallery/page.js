@@ -7,14 +7,14 @@ import Link from 'next/link';
 // Initialize Supabase client
 
 
-export default function Page() {
+export default function Page(tost) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [images, setImages] = useState([]);
     const [totalPages , setTotalPages] = useState(1);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const imagesPerPage = 15;
+   // const imagesPerPage = 15;
 
     // Fetch image data from Supabase database table
     useEffect(() => {
@@ -24,22 +24,14 @@ export default function Page() {
                 //     .from("images")
                 //     .select("*")
                 //     .order("upload_date", { ascending: false });
-                let a = await fetch("/api/sendphoto",{
-                    method: "POST",
-                    headers:{
-                        "Content-Type":"application/json",
-                    },
-                    body : JSON.stringify({
-                        pageNum:currentPage,
-                        limit:10
-                    })
-                   });
+                let a = await fetch("/api/folder/getfolder");
                 let result= await a.json();
                 if(result.ok){
-                    setImages(result.photos);
-                    setTotalPages(result.totalPage);
+                    setImages(result.data);
+                    //setTotalPages(result.totalPage);
 
                 }else{
+                    tost.error(result.message);
 
                 }
                     
@@ -55,66 +47,39 @@ export default function Page() {
     // Calculate total pages and get images for current page
     
 
-    // Handle pagination
-    const goToNextPage = () => {
-        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-    };
-
-    const goToPreviousPage = () => {
-        if (currentPage > 1) setCurrentPage(currentPage - 1);
-    };
-
     return (
-        <div className="text-black p-6 bg-gray-100 min-h-screen">
-            {loading ? (
-                <p className="text-center text-yellow-500 font-semibold">Loading...</p>
-            ) : error ? (
-                <p className="text-center text-red-500">Error: {error}</p>
-            ) : (
-                <div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-6">
-                        {images.map((image, index) => (
-                            <div key={index} className="bg-yellow-100 border border-yellow-300 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                                <Link href={`/gallery/${image._id}`}>
-                                    <img
-                                        src={image.image_url}
-                                        alt={`Image ${index + 1}`}
-                                        className="w-full h-60 object-contain hover:scale-105 transition-transform duration-300"
-                                    />
-                                </Link>
-                                <div className="p-4 bg-yellow-50">
-                                    <h2 className="text-lg font-semibold text-yellow-700 truncate">{image.caption}</h2>
-                                    <p className="text-sm text-yellow-600">Uploaded by {image.uploader_name}</p>
-                                    <p className="text-xs text-yellow-500">
-                                        {image.uploaded_at}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+        <div className="text-black p-6 bg-gray-50 min-h-screen">
+          {loading ? (
+            <p className="text-center text-yellow-500 font-semibold text-lg animate-pulse">
+              Loading...
+            </p>
+          ) : error ? (
+            <p className="text-center text-red-500 font-semibold text-lg">
+              Error: {error}
+            </p>
+          ) : (
+            <div className="max-w-6xl mx-auto p-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                {images.map((image) => (
+                  <Link key={image._id} href={`/gallery/${image.foldername}`} className="group">
+                    <div className="p-4 bg-white rounded-lg shadow-md transition transform hover:scale-105 hover:shadow-lg">
+                      <img
+                        src="/folder.png"
+                        alt="Folder Icon"
+                        className="w-16 h-16 mx-auto"
+                      />
+                      <h2 className="text-lg font-semibold text-gray-800 text-center mt-2">
+                        {image.foldername}
+                      </h2>
+                      <p className="text-sm text-gray-600 text-center mt-1">
+                        {image.folderdescription}
+                      </p>
                     </div>
-                    
-                    {/* Pagination controls */}
-                    <div className="flex justify-center items-center gap-4 mt-6">
-                        <button
-                            onClick={goToPreviousPage}
-                            disabled={currentPage === 1}
-                            className={`px-4 py-2 rounded-lg font-semibold ${currentPage === 1 ? 'bg-yellow-300 text-gray-500 cursor-not-allowed' : 'bg-yellow-500 text-white hover:bg-yellow-600'} transition-colors duration-200`}
-                        >
-                            Previous
-                        </button>
-                        <span className="text-yellow-700 font-semibold">
-                            Page {currentPage} of {totalPages}
-                        </span>
-                        <button
-                            onClick={goToNextPage}
-                            disabled={currentPage === totalPages}
-                            className={`px-4 py-2 rounded-lg font-semibold ${currentPage === totalPages ? 'bg-yellow-300 text-gray-500 cursor-not-allowed' : 'bg-yellow-500 text-white hover:bg-yellow-600'} transition-colors duration-200`}
-                        >
-                            Next
-                        </button>
-                    </div>
-                </div>
-            )}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-    );
+      );
 }
