@@ -1,5 +1,47 @@
 import React from 'react'
 
+export const metadata = {
+  title: "Support Dayboddho NGO - Donate to Make a Difference",
+  description:
+  "Contribute to Dayboddho’s mission to support needy students and communities. Your donation helps us provide educational resources, community programs, and essential aid to those in need.",
+  keywords: [
+  "Donate to Dayboddho",
+  "Support NGO",
+  "Charity Donations",
+  "Help Needy Students",
+  "Community Aid",
+  "Non-Profit Contributions",
+  "Educational Support Donations",
+  "Social Impact Funding",
+  "Volunteer Support",
+  "Dayboddho Fundraising"
+  ],
+  openGraph: {
+  title: "Donate to Dayboddho NGO - Empower Lives Through Your Support",
+  description:
+  "Make an impact by donating to Dayboddho. Your support helps us uplift communities and provide education to underprivileged students.",
+  url: "https://dayboddho.vercel.app/donate",
+  type: "website",
+  images: [
+  {
+  url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+  alt: "Dayboddho Donation Page Featured Image"
+  }
+  ]
+  },
+  twitter: {
+  card: "summary_large_image",
+  title: "Support Dayboddho - Donate to Change Lives",
+  description:
+  "Your donation to Dayboddho makes a real difference. Help us provide educational opportunities and community support to those in need.",
+  images: [
+  {
+  url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+  alt: "Dayboddho Donation Key Image"
+  }
+  ]
+  }
+  };
 export default function donate() {
   return (
     <section className="bg-gray-100 p-8 min-h-screen flex items-center justify-center">

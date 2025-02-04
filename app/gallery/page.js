@@ -1,85 +1,56 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-//import supabase from '@/util/supabase';
-import Link from 'next/link';
+import React from 'react'
+import Content from './Content'
+
+ 
+// galleryMetadata.js in Next.js
+
+export const metadata = {
+title: "Dayboddho NGO Gallery - Inspiring Stories & Community Impact",
+description:
+"Explore the Dayboddho Gallery to witness the transformative work done by dedicated teachers from Dinhata. Discover heartwarming moments, student success stories, and impactful community initiatives that reflect our mission to support the needy, especially students.",
+keywords: [
+"Dayboddho",
+"NGO Gallery",
+"Dinhata Teachers NGO",
+"Student Support",
+"Community Initiatives",
+"Needy Students",
+"Social Impact",
+"Educational Aid",
+"NGO Activities",
+"Volunteer Stories"
+],
+openGraph: {
+title: "Dayboddho NGO Gallery - Inspiring Community Stories",
+description:
+"A visual journey through Dayboddho’s efforts, showcasing impactful projects and student achievements.",
+url: "https://dayboddho.vercel.app/gallery",
+type: "website",
+images: [
+{
+url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+alt: "Dayboddho Gallery Featured Image"
+}
+]
+},
+twitter: {
+card: "summary_large_image",
+title: "Dayboddho Gallery - Empowering Communities Through Education",
+description:
+"See how Dayboddho is changing lives with heartfelt community work and student support.",
+images: [
+{
+url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+alt: "Dayboddho Gallery Key Image"
+}
+]
+}
+};
 
 
-// Initialize Supabase client
 
-
-export default function Page(tost) {
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [images, setImages] = useState([]);
-    const [totalPages , setTotalPages] = useState(1);
-
-    const [currentPage, setCurrentPage] = useState(1);
-   // const imagesPerPage = 15;
-
-    // Fetch image data from Supabase database table
-    useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                // const { data, error } = await supabase
-                //     .from("images")
-                //     .select("*")
-                //     .order("upload_date", { ascending: false });
-                let a = await fetch("/api/folder/getfolder");
-                let result= await a.json();
-                if(result.ok){
-                    setImages(result.data);
-                    //setTotalPages(result.totalPage);
-
-                }else{
-                    tost.error(result.message);
-
-                }
-                    
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchImages();
-    }, [currentPage]);
-
-    // Calculate total pages and get images for current page
-    
-
-    return (
-        <div className="text-black p-6 bg-gray-50 min-h-screen">
-          {loading ? (
-            <p className="text-center text-yellow-500 font-semibold text-lg animate-pulse">
-              Loading...
-            </p>
-          ) : error ? (
-            <p className="text-center text-red-500 font-semibold text-lg">
-              Error: {error}
-            </p>
-          ) : (
-            <div className="max-w-6xl mx-auto p-4">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                {images.map((image) => (
-                  <Link key={image._id} href={`/gallery/${image.foldername}`} className="group">
-                    <div className="p-4 bg-white rounded-lg shadow-md transition transform hover:scale-105 hover:shadow-lg">
-                      <img
-                        src="/folder.png"
-                        alt="Folder Icon"
-                        className="w-16 h-16 mx-auto"
-                      />
-                      <h2 className="text-lg font-semibold text-gray-800 text-center mt-2">
-                        {image.foldername}
-                      </h2>
-                      <p className="text-sm text-gray-600 text-center mt-1">
-                        {image.folderdescription}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      );
+export default function page() {
+  return (
+    <Content />
+  )
 }

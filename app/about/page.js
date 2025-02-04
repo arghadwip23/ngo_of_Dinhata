@@ -1,8 +1,48 @@
 import React from 'react'
+// aboutMetadata.js in Next.js
+
 export const metadata = {
-  title: "about -us",
-  description: "a ngo from dinhata working hard to improve the society",
-}
+  title: "About Dayboddho NGO - Our Mission, Vision & Impact",
+  description:
+  "Learn about Dayboddho, an NGO founded by passionate teachers from Dinhata. Discover our mission to uplift needy individuals, especially students, through educational programs, community support, and volunteer initiatives.",
+  keywords: [
+  "About Dayboddho",
+  "NGO Mission",
+  "Dinhata Teachers NGO",
+  "Educational Programs",
+  "Student Empowerment",
+  "Community Support",
+  "Volunteer Opportunities",
+  "Social Impact Initiatives",
+  "Non-Profit Organization",
+  "Dayboddho Vision and Goals"
+  ],
+  openGraph: {
+  title: "About Dayboddho NGO - Making a Lasting Impact",
+  description:
+  "Discover the story of Dayboddho, our vision for change, and how we are making a difference in the lives of students and communities in Dinhata.",
+  url: "https://dayboddho.vercel.app/about",
+  type: "website",
+  images: [
+  {
+  url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+  alt: "Dayboddho About Page Featured Image"
+  }
+  ]
+  },
+  twitter: {
+  card: "summary_large_image",
+  title: "Dayboddho NGO - Our Journey, Mission & Community Impact",
+  description:
+  "Learn about Dayboddho’s journey, its mission to support the needy, and how you can get involved in our impactful initiatives.",
+  images: [
+  {
+  url: "https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/assets/Group%2010.png",
+  alt: "Dayboddho About Page Key Image"
+  }
+  ]
+  }
+  };
 
 export default function absolute() {
   return (
