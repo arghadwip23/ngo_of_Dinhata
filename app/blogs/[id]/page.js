@@ -1,50 +1,34 @@
-'use client';
+import React from 'react'
+import Content from './Content';
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { getMetadata } from '@/lib/exportMeta';
 
-export default function BlogDetails({ params }) {
-  const [blog, setBlog] = useState(null);
-  const router = useRouter();
 
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const res = await fetch(`/api/blogs/${params.id}`);
-        const result = await res.json();
 
-        if (result.ok) {
-          setBlog(result.blog);
-        } else {
-          console.error('Failed to fetch blog');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
-    fetchBlog();
-  }, [params.id]);
-
-  if (!blog) {
-    return <div>Loading...</div>;
+export async function generateMetadata({params}) {
+  let data = await getMetadata(params.id);
+  return {
+    title: data.title,
+    description: data.metaDescription,
+    image: data.image,
+    url: `https://www.dayboddho.vercel.app/blogs/${params.id}`,
+    openGraph: {
+      title: data.title,
+      description: data.metaDescription,
+      type: 'article',
+      image: data.image,
+      url: `https://www.dayboddho.vercel.app/blogs/${params.id}`,
+      publishedTime: data.time,
+      authors: data.author,
+    },
   }
 
+}
+
+
+
+export default function page({params}) {
   return (
-    <div className="min-h-screen bg-gray-100 md:p-8 text-black" >
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{blog.title}</h1>
-        {blog.image && (
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-64 object-contain bg-gray-400 mt-4 rounded"
-          />
-        )}
-        <div className="mt-4 text-gray-700">
-          <p dangerouslySetInnerHTML={{ __html: blog.content }}></p>
-        </div>
-      </div>
-    </div>
-  );
+    <Content params={params} />
+  )
 }
